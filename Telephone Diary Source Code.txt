@@ -1,0 +1,103 @@
+
+
+
+               Save Code
+
+               SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-ADG77QL\SQLEXPRESS;Initial Catalog=telephonedb;Integrated Security=True");
+
+
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("insert into Phone values(@id,@firstname,@lastname,@phone,@email,@address)", con);
+
+            cnn.Parameters.AddWithValue("@Id", int.Parse(textBox1.Text));
+            cnn.Parameters.AddWithValue("@Firstname", textBox2.Text);
+
+            cnn.Parameters.AddWithValue("@LastName", textBox3.Text);
+
+            
+
+            cnn.Parameters.AddWithValue("@Phone", textBox4.Text);
+
+            cnn.Parameters.AddWithValue("@Email", textBox5.Text);
+
+            cnn.Parameters.AddWithValue("@Address", textBox6.Text);
+
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Saved Successfully");
+
+
+
+           Add Code
+
+
+           SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-ADG77QL\SQLEXPRESS;Initial Catalog=telephonedb;Integrated Security=True");
+
+
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("select * from Phone", con);
+
+            SqlDataAdapter da = new SqlDataAdapter(cnn);
+            DataTable table = new DataTable();
+            da.Fill(table);
+
+            dataGridView1.DataSource = table;
+
+
+
+           Update Code
+
+
+
+           SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-ADG77QL\SQLEXPRESS;Initial Catalog=telephonedb;Integrated Security=True");
+
+
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("update Phone set firstname=@firstname,lastname=@lastname,phone=@phone,email=@email,address=@address where id=@id", con);
+
+            cnn.Parameters.AddWithValue("@Id", int.Parse(textBox1.Text));
+            cnn.Parameters.AddWithValue("@Firstname", textBox2.Text);
+
+            cnn.Parameters.AddWithValue("@LastName", int.Parse(textBox3.Text));
+
+            
+
+            cnn.Parameters.AddWithValue("@Phone", textBox4.Text);
+
+            cnn.Parameters.AddWithValue("@Email", textBox5.Text);
+
+            cnn.Parameters.AddWithValue("@Address", textBox6.Text);
+
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Updated Successfully");
+
+
+
+          Delete Code
+
+
+          SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-ADG77QL\SQLEXPRESS;Initial Catalog=telephonedb;Integrated Security=True");
+
+
+            con.Open();
+
+            SqlCommand cnn = new SqlCommand("delete Phone where id=@id", con);
+
+            cnn.Parameters.AddWithValue("@Id", int.Parse(textBox1.Text));
+            
+
+            cnn.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Deleted Successfully");
+
+
+
+
+           
+
+
+          
